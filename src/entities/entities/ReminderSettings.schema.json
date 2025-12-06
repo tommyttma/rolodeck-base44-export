@@ -1,0 +1,37 @@
+{
+  "name": "ReminderSettings",
+  "type": "object",
+  "properties": {
+    "email_reminders_enabled": {
+      "type": "boolean",
+      "description": "Whether to send daily email reminders"
+    },
+    "reminder_time": {
+      "type": "string",
+      "description": "Preferred time to receive reminders (e.g., 09:00)"
+    },
+    "days_before_birthday": {
+      "type": "number",
+      "description": "How many days before a birthday to remind"
+    },
+    "days_before_occasion": {
+      "type": "number",
+      "description": "How many days before an occasion to remind"
+    }
+  },
+  "required": [],
+  "rls": {
+    "create": {
+      "created_by": "{{user.email}}"
+    },
+    "read": {
+      "created_by": "{{user.email}}"
+    },
+    "update": {
+      "created_by": "{{user.email}}"
+    },
+    "delete": {
+      "created_by": "{{user.email}}"
+    }
+  }
+}
