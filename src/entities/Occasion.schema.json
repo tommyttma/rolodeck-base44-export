@@ -1,0 +1,61 @@
+{
+  "name": "Occasion",
+  "type": "object",
+  "properties": {
+    "name": {
+      "type": "string",
+      "description": "Name of the occasion (e.g., Diwali, Christmas)"
+    },
+    "date": {
+      "type": "string",
+      "format": "date",
+      "description": "Date of the occasion this year"
+    },
+    "is_recurring": {
+      "type": "boolean",
+      "description": "Whether this occasion repeats yearly"
+    },
+    "icon": {
+      "type": "string",
+      "description": "Emoji icon for the occasion"
+    },
+    "is_default": {
+      "type": "boolean",
+      "description": "Whether this is a system default occasion"
+    }
+  },
+  "required": [
+    "name",
+    "date"
+  ],
+  "rls": {
+    "create": {
+      "created_by": "{{user.email}}",
+      "is_default": {
+        "$ne": true
+      }
+    },
+    "read": {
+      "$or": [
+        {
+          "is_default": true
+        },
+        {
+          "created_by": "{{user.email}}"
+        }
+      ]
+    },
+    "update": {
+      "created_by": "{{user.email}}",
+      "is_default": {
+        "$ne": true
+      }
+    },
+    "delete": {
+      "created_by": "{{user.email}}",
+      "is_default": {
+        "$ne": true
+      }
+    }
+  }
+}
