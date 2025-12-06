@@ -1,0 +1,58 @@
+{
+  "name": "Interaction",
+  "type": "object",
+  "properties": {
+    "contact_id": {
+      "type": "string",
+      "description": "Reference to the contact"
+    },
+    "type": {
+      "type": "string",
+      "enum": [
+        "coffee_chat",
+        "phone_call",
+        "email",
+        "linkedin_message",
+        "event",
+        "other"
+      ],
+      "description": "Type of interaction"
+    },
+    "date": {
+      "type": "string",
+      "format": "date",
+      "description": "Date of the interaction"
+    },
+    "summary": {
+      "type": "string",
+      "description": "Brief summary of what you discussed"
+    },
+    "follow_up_needed": {
+      "type": "boolean",
+      "description": "Whether follow-up is needed"
+    },
+    "follow_up_notes": {
+      "type": "string",
+      "description": "Notes about what to follow up on"
+    }
+  },
+  "required": [
+    "contact_id",
+    "type",
+    "date"
+  ],
+  "rls": {
+    "create": {
+      "created_by": "{{user.email}}"
+    },
+    "read": {
+      "created_by": "{{user.email}}"
+    },
+    "update": {
+      "created_by": "{{user.email}}"
+    },
+    "delete": {
+      "created_by": "{{user.email}}"
+    }
+  }
+}
